@@ -1,0 +1,27 @@
+preset: package
+
+namespace: Voltra\LaravelAiHoneypot
+user-auth-model: App\Models\User
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: Voltra\LaravelAiHoneypot\Console
+
+model:
+  namespace: Voltra\LaravelAiHoneypot\Models
+
+provider:
+  namespace: Voltra\LaravelAiHoneypot\Providers
+
+testing:
+  namespace: Voltra\LaravelAiHoneypot\Tests

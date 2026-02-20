@@ -7,6 +7,8 @@ namespace Voltra\LaravelAiHoneypot;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Voltra\LaravelAiHoneypot\Contracts\AiHoneypotServiceContract;
+use Voltra\LaravelAiHoneypot\Services\AiHoneypotService;
 
 class LaravelAiHoneypotServiceProvider extends PackageServiceProvider
 {
@@ -23,6 +25,13 @@ class LaravelAiHoneypotServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->askToStarRepoOnGitHub($this->getRepoName());
             });
+    }
+
+    public function packageBooted()
+    {
+        parent::packageBooted();
+
+        $this->app->scoped(AiHoneypotServiceContract::class, AiHoneypotService::class);
     }
 
     protected function getRepoName(): string
