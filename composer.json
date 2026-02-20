@@ -1,0 +1,82 @@
+{
+    "name": "voltra/laravel-ai-honeypot",
+    "description": "A configurable Honeypot trap for AIs that try to illicitly or illegally scrap or access your website",
+    "type": "library",
+    "homepage": "https://github.com/voltra/laravel-ai-honeypot",
+    "support": {
+        "issues": "https://github.com/voltra/laravel-ai-honeypot/issues",
+        "source": "https://github.com/voltra/laravel-ai-honeypot"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Voltra",
+            "email": "dev@ludwig-guerin.fr",
+            "role": "Developer"
+        }
+    ],
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "@php ./vendor/bin/phpstan analyse",
+        "test": "@php ./vendor/bin/pest",
+        "test-coverage": "@php ./vendor/bin/pest --coverage",
+        "format": "@php ./vendor/bin/pint",
+        "update-facade": "@php ./vendor/bin/facade.php Voltra\\FilamentSvgAvatar\\Facades\\FilamentSvgAvatar",
+        "pre-commit": [
+            "@update-facade",
+            "@analyse",
+            "@format",
+            "@test"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": {
+        "facade-documenter": {
+            "type": "vcs",
+            "url": "git@github.com:laravel/facade-documenter.git"
+        }
+    },
+    "require": {
+        "illuminate/contracts": "^10.0||^11.0||^12.0",
+        "spatie/laravel-package-tools": "^1.15"
+    },
+    "require-dev": {
+        "laravel/facade-documenter": "dev-main",
+        "larastan/larastan": "^2.9||^3.9",
+        "laravel/pint": "^1.27",
+        "orchestra/testbench": "^8.20||^9.40||^10.9",
+        "pestphp/pest": "^2.30||^3.8||^4.0",
+        "pestphp/pest-plugin-arch": "^2.0||^3.1||^4.0",
+        "pestphp/pest-plugin-laravel": "^2.0||^3.2||^4.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^1.0||^2.0"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Voltra\\LaravelAiHoneypot\\LaravelAiHoneypotServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Voltra\\LaravelAiHoneypot\\": "src/",
+            "Voltra\\LaravelAiHoneypot\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Voltra\\LaravelAiHoneypot\\Tests\\": "tests/"
+        }
+    }
+}
