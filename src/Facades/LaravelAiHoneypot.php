@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Voltra\LaravelAiHoneypot\Facades;
 
 use Illuminate\Support\Facades\Facade;
@@ -10,7 +12,8 @@ use Illuminate\Support\Facades\Facade;
  *
  * @see \Voltra\LaravelAiHoneypot\Contracts\AiHoneypotServiceContract
  */
-class LaravelAiHoneypot extends Facade {
+class LaravelAiHoneypot extends Facade
+{
     /**
      * {@inheritDoc}
      *
